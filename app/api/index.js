@@ -1,4 +1,4 @@
-const URL = "https://api.github.com/";
+const URL = "https://api.github.com";
 
 export const findUser = userName => {
   const endpointURL = `${URL}/users/${userName}`;
