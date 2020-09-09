@@ -1,5 +1,14 @@
 const URL = "https://api.github.com";
 
+const getCommonHeaders = () => {
+  const base64Data = btoa(`${process.env.GITHUB_USERNAME}:${process.env.GITHUB_TOKEN}`);
+  return {
+    'Accept': "application/vnd.github.v3+json",
+    'Authorization': 'Basic ' + base64Data
+  }
+};
+
+
 const handleHTTPError = response => {
   return response.json()
     .then(data => {
@@ -14,9 +23,7 @@ export const findUser = userName => {
   const endpointURL = `${URL}/users/${userName}`;
   const options = {
     method: 'GET',
-    headers: {
-      'Accept': "application/vnd.github.v3+json"
-    }
+    headers: getCommonHeaders()
   };
   return fetch(endpointURL, options)
     .then(handleHTTPError)
