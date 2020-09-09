@@ -8,5 +8,6 @@ export const findUser = userName => {
       'Accept': "application/vnd.github.v3+json"
     }
   };
-  return fetch(endpointURL, options);
+  return fetch(endpointURL, options)
+    .then(response => response.json());
 };
