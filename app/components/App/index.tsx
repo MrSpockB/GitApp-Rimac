@@ -46,10 +46,7 @@ class App extends Component<{}, State> {
     const { errMessage, selectedUser, isLoading } = this.state;
     return (
       <div className="container">
-        <SearchBar onSearch={this.searchUser} isLoading={isLoading} />
-        {!!errMessage && (
-          <span>{errMessage}</span>
-        )}
+        <SearchBar onSearch={this.searchUser} isLoading={isLoading} errMessage={errMessage} />
         <div className="row">
           <div className="column">
             <UserProfile userData={selectedUser}/>

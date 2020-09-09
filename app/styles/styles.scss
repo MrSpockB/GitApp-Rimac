@@ -17,3 +17,11 @@
     user-select: none;
   }
 }
+
+.error-message {
+  background-color: #feecf0;
+  color: #cc0f35;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
+}
