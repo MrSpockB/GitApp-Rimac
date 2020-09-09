@@ -1,9 +1,11 @@
 import { UserData } from '../../models/UserData';
 
+export interface UsersData {
+    [key: string]: UserData
+}
+
 export interface State {
     errMessage: string;
-    selectedUser: UserData,
-    usersData: {
-        [key: string]: UserData
-    }
+    selectedUser: UserData | null,
+    usersData: UsersData
 }
