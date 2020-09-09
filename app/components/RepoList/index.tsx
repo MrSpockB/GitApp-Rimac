@@ -1,4 +1,4 @@
-import React, {FunctionComponent, Fragment, useState} from 'react';
+import React, {FunctionComponent, Fragment, useState, useEffect} from 'react';
 import { Repo } from '../../models/Repo';
 
 interface Props {
@@ -14,6 +14,10 @@ const RepoList: FunctionComponent<Props> = ({ repos }) => {
     } else if (order === 'desc') {
         icon = '↓';
     }
+
+    useEffect(() => {
+        setTempRepos(repos);
+    }, [repos]);
 
 
     const updateOrdering = () => {
