@@ -1,13 +1,20 @@
-
+@import "loading_icon";
 .profile-wrapper {
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
-  img {
-    max-width: 350px;
+  align-items: center;
+  flex-direction: column;
+  @media (min-width: 500px) {
+    flex-direction: row;
   }
-  .data {
-    max-width: 35%;
+  @media (min-width: 640px) {
+    flex-direction: column;
+  }
+  @media (min-width: 930px) {
+    flex-direction: row;
+  }
+  img {
+    max-width: 150px;
   }
 }
 
@@ -19,4 +26,12 @@
     cursor: pointer;
     user-select: none;
   }
+}
+
+.error-message {
+  background-color: #feecf0;
+  color: #cc0f35;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+  padding: 1.25rem 2.5rem 1.25rem 1.5rem;
 }

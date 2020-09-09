@@ -7,5 +7,6 @@ export interface UsersData {
 export interface State {
     errMessage: string;
     selectedUser: UserData | null,
-    usersData: UsersData
+    usersData: UsersData,
+    isLoading: boolean
 }

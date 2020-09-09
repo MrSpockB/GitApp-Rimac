@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import SearchBar from "../../components/SearchBar";
 import { getUserInfo } from "../../api";
 import { State, UsersData } from './types';
-import { UserData } from '../../models/UserData';
 import UserProfile from '../UserProfile';
 import RepoList from '../RepoList';
 
@@ -10,7 +9,8 @@ class App extends Component<{}, State> {
   state = {
     usersData: {} as UsersData,
     errMessage: '',
-    selectedUser: null
+    selectedUser: null,
+    isLoading: false
   };
 
   searchUser = (user: string) => {
@@ -21,13 +21,15 @@ class App extends Component<{}, State> {
         errMessage: ''
       })
     }
+    this.setState({ isLoading: true });
     getUserInfo(user)
       .then(data => {
         this.setState(({ usersData }) => {
           return {
             usersData: {...usersData, [user]: data},
             errMessage: '',
-            selectedUser: data
+            selectedUser: data,
+            isLoading: false
           }
         })
       })
@@ -36,18 +38,19 @@ class App extends Component<{}, State> {
         if (err.message === "Not Found") {
           errMessage = 'User not found'
         }
-        this.setState({ errMessage: errMessage });
+        this.setState({
+          errMessage: errMessage,
+          isLoading: false,
+          selectedUser: null
+        });
       });
   };
 
   render() {
-    const { errMessage, selectedUser } = this.state;
+    const { errMessage, selectedUser, isLoading } = this.state;
     return (
       <div className="container">
-        <SearchBar onSearch={this.searchUser} />
-        {!!errMessage && (
-          <span>{errMessage}</span>
-        )}
+        <SearchBar onSearch={this.searchUser} isLoading={isLoading} errMessage={errMessage} />
         <div className="row">
           <div className="column">
             <UserProfile userData={selectedUser}/>
