@@ -47,7 +47,14 @@ class App extends Component<{}, State> {
         {!!errMessage && (
           <span>{errMessage}</span>
         )}
-        <UserProfile userData={selectedUser}/>
+        <div className="row">
+          <div className="column">
+            <UserProfile userData={selectedUser}/>
+          </div>
+          <div className="column">
+
+          </div>
+        </div>
       </div>
     )
   }
