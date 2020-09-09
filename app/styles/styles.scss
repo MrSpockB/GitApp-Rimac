@@ -1,0 +1,12 @@
+
+.profile-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  img {
+    max-width: 350px;
+  }
+  .data {
+    max-width: 35%;
+  }
+}
