@@ -1,18 +1,31 @@
 import React from "react";
 import SearchBar from "./components/SearchBar";
-import { findUser } from "./api";
+import { getUserInfo } from "./api";
 
 class App extends React.Component {
   state = {
     usersData: {},
-    errMessage: ''
+    errMessage: '',
+    selectedUser: {}
   };
 
   searchUser = (user) => {
-    findUser(user)
+    const { usersData } = this.state;
+    if (usersData[user]) {
+      return this.setState({
+        selectedUser: usersData[user],
+        errMessage: ''
+      })
+    }
+    getUserInfo(user)
       .then(data => {
-        console.log('DATA: ', data);
-
+        this.setState(({ usersData }) => {
+          return {
+            usersData: {...usersData, [user]: data},
+            errMessage: '',
+            selectedUser: data
+          }
+        })
       })
       .catch(err => {
         let errMessage = err.message;

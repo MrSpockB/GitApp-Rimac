@@ -8,7 +8,6 @@ const getCommonHeaders = () => {
   }
 };
 
-
 const handleHTTPError = response => {
   return response.json()
     .then(data => {
