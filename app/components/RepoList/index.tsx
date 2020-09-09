@@ -48,7 +48,6 @@ const RepoList: FunctionComponent<Props> = ({ repos }) => {
         if (order === 'desc') {
             orderedRepos.reverse();
         }
-        console.log('ORDERED REPOS: ', orderedRepos);
         setTempRepos(orderedRepos)
     };
 
