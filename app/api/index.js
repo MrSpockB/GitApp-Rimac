@@ -19,5 +19,13 @@ export const findUser = userName => {
     }
   };
   return fetch(endpointURL, options)
-    .then(response => response.json());
+    .then(handleHTTPError)
+    .then(data => {
+      return {
+        userName: data.login,
+        profilePictureURL: data.avatar_url,
+        email: data.email,
+        profileURL: data.html_url
+      }
+    });
 };
