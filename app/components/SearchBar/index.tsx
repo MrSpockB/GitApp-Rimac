@@ -1,10 +1,11 @@
 import React, { useState, FunctionComponent } from "react";
 
 interface Props {
-    onSearch: (userName: string) => void
+    onSearch: (userName: string) => void,
+    isLoading: boolean
 }
 
-const SearchBar: FunctionComponent<Props>  = ({ onSearch }) => {
+const SearchBar: FunctionComponent<Props>  = ({ onSearch, isLoading }) => {
   const [user, setUser] = useState('');
 
   return (
@@ -16,10 +17,19 @@ const SearchBar: FunctionComponent<Props>  = ({ onSearch }) => {
         onChange={(event => setUser(event.target.value))}
       />
       <button
-        disabled={!user}
+        disabled={!user || isLoading}
         onClick={() => onSearch(user)}
       >
-        Search
+        {isLoading ? (
+            <div className="sk-chase">
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+                <div className="dot"></div>
+            </div>
+        ): 'Search'}
       </button>
     </div>
   )
