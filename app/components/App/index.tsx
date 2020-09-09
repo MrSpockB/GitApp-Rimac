@@ -38,7 +38,11 @@ class App extends Component<{}, State> {
         if (err.message === "Not Found") {
           errMessage = 'User not found'
         }
-        this.setState({ errMessage: errMessage });
+        this.setState({
+          errMessage: errMessage,
+          isLoading: false,
+          selectedUser: null
+        });
       });
   };
 
