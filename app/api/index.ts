@@ -1,3 +1,5 @@
+import { UserData } from '../models/UserData';
+
 const URL = "https://api.github.com";
 
 const getCommonHeaders = () => {
@@ -8,9 +10,9 @@ const getCommonHeaders = () => {
   }
 };
 
-const handleHTTPError = response => {
+const handleHTTPError = (response: any) => {
   return response.json()
-    .then(data => {
+    .then((data: any) => {
       if(!response.ok) {
         throw Error(data.message || 'HTTP error');
       }
@@ -18,7 +20,7 @@ const handleHTTPError = response => {
     });
 };
 
-export const findUser = userName => {
+const findUser = (userName: string) => {
   const endpointURL = `${URL}/users/${userName}`;
   const options = {
     method: 'GET',
@@ -36,7 +38,7 @@ export const findUser = userName => {
     });
 };
 
-export const getUserRepos = userName => {
+const getUserRepos = (userName: string) => {
   const endpointURL = `${URL}/users/${userName}/repos`;
   const options = {
     method: 'GET',
@@ -45,7 +47,7 @@ export const getUserRepos = userName => {
   return fetch(endpointURL, options)
     .then(handleHTTPError)
     .then(repos => {
-      return repos.map(repo => ({
+      return repos.map((repo: any) => ({
         name: repo.name,
         description: repo.description,
         repoURL: repo.html_url
@@ -53,7 +55,7 @@ export const getUserRepos = userName => {
     });
 }
 
-export const getUserInfo = userName => {
+export const getUserInfo = (userName: string): Promise<UserData> => {
   return findUser(userName)
     .then(userData => {
       return Promise.all([userData, getUserRepos(userName)])

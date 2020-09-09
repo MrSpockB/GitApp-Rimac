@@ -1,15 +1,17 @@
-import React from "react";
-import SearchBar from "./components/SearchBar";
-import { getUserInfo } from "./api";
+import React, { Component } from "react";
+import SearchBar from "../../components/SearchBar";
+import { getUserInfo } from "../../api";
+import { State } from './types';
+import { UserData } from '../../models/UserData';
 
-class App extends React.Component {
+class App extends Component<{}, State> {
   state = {
     usersData: {},
     errMessage: '',
-    selectedUser: {}
+    selectedUser: {} as UserData
   };
 
-  searchUser = (user) => {
+  searchUser = (user: string) => {
     const { usersData } = this.state;
     if (usersData[user]) {
       return this.setState({
