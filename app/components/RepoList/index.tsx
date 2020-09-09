@@ -22,7 +22,7 @@ const RepoList: FunctionComponent<Props> = ({ repos }) => {
                 {repos.map(repo => (
                     <tr key={`list-${repo.name}`}>
                         <td>{repo.name}</td>
-                        <td>{repo.description}</td>
+                        <td>{repo.description || '---'}</td>
                         <td>
                             <a target="_blank" href={repo.repoURL}>Link</a>
                         </td>
