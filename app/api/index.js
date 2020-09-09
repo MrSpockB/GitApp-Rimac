@@ -36,3 +36,33 @@ export const findUser = userName => {
       }
     });
 };
+
+export const getUserRepos = userName => {
+  const endpointURL = `${URL}/users/${userName}/repos`;
+  const options = {
+    method: 'GET',
+    headers: getCommonHeaders()
+  };
+  return fetch(endpointURL, options)
+    .then(handleHTTPError)
+    .then(repos => {
+      return repos.map(repo => ({
+        name: repo.name,
+        description: repo.description,
+        repoURL: repo.html_url
+      }))
+    });
+}
+
+export const getUserInfo = userName => {
+  return findUser(userName)
+    .then(userData => {
+      return Promise.all([userData, getUserRepos(userName)])
+    })
+    .then(([userData, userRepos]) => {
+      return {
+        ...userData,
+        repos: userRepos
+      }
+    });
+};
