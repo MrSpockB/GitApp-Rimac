@@ -13,9 +13,9 @@ const UserProfile: FunctionComponent<Props> = ({ userData }) => {
         <Fragment>
             <hr/>
             <div className="profile-wrapper">
-                <img className="column" src={userData.profilePictureURL} alt="user profile picture"/>
-                <div className="column data">
-                    <h2>Github Profile</h2>
+                <img src={userData.profilePictureURL} alt="user profile picture"/>
+                <div className="data">
+                    <h4>Github Profile</h4>
                     <span><b>Username:</b> {userData.userName}</span><br/>
                     <span><b>Email:</b> {userData.email}</span><br/>
                     <a target="_blank" href={userData.profileURL}>Link to profile</a>

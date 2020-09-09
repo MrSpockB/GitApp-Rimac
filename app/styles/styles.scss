@@ -1,13 +1,10 @@
 
 .profile-wrapper {
   display: flex;
-  align-items: center;
   justify-content: space-evenly;
+  align-items: center;
   img {
-    max-width: 350px;
-  }
-  .data {
-    max-width: 35%;
+    max-width: 150px;
   }
 }
 
