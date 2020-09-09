@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import "../node_modules/milligram/dist/milligram.min.css";
 
 class App extends React.Component {
   render() {
