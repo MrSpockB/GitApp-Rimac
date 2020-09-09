@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, FunctionComponent } from "react";
 
-const SearchBar = ({ onSearch }) => {
+interface Props {
+    onSearch: (userName: string) => void
+}
+
+const SearchBar: FunctionComponent<Props>  = ({ onSearch }) => {
   const [user, setUser] = useState('');
 
   return (
