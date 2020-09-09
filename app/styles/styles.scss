@@ -10,3 +10,13 @@
     max-width: 35%;
   }
 }
+
+.repo-list {
+  display: block;
+  max-height: 450px;
+  overflow-y: auto;
+  .name-header {
+    cursor: pointer;
+    user-select: none;
+  }
+}

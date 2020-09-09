@@ -4,6 +4,7 @@ import { getUserInfo } from "../../api";
 import { State, UsersData } from './types';
 import { UserData } from '../../models/UserData';
 import UserProfile from '../UserProfile';
+import RepoList from '../RepoList';
 
 class App extends Component<{}, State> {
   state = {
@@ -47,7 +48,16 @@ class App extends Component<{}, State> {
         {!!errMessage && (
           <span>{errMessage}</span>
         )}
-        <UserProfile userData={selectedUser}/>
+        <div className="row">
+          <div className="column">
+            <UserProfile userData={selectedUser}/>
+          </div>
+          <div className="column">
+            {selectedUser && (
+                <RepoList repos={selectedUser.repos}/>
+            )}
+          </div>
+        </div>
       </div>
     )
   }
