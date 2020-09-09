@@ -9,7 +9,7 @@ class App extends React.Component {
     selectedUser: {}
   };
 
-  searchUser = (user) => {
+  searchUser = (user: string) => {
     const { usersData } = this.state;
     if (usersData[user]) {
       return this.setState({
