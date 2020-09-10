@@ -1,4 +1,5 @@
 import React, { useState, FunctionComponent } from "react";
+import Loader from '../Loader';
 
 interface Props {
     onSearch: (userName: string) => void,
@@ -24,16 +25,7 @@ const SearchBar: FunctionComponent<Props> = ({onSearch, isLoading,errMessage }) 
         disabled={!user || isLoading}
         onClick={() => onSearch(user)}
       >
-        {isLoading ? (
-            <div className="sk-chase">
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-                <div className="dot"></div>
-            </div>
-        ): 'Search'}
+        {isLoading ? <Loader/> : 'Search'}
       </button>
     </div>
   )
