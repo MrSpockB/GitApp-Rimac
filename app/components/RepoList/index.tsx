@@ -16,6 +16,7 @@ const RepoList: FunctionComponent<Props> = ({ repos }) => {
     }
 
     useEffect(() => {
+        setOrder('');
         setTempRepos(repos);
     }, [repos]);
 
