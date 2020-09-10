@@ -16,6 +16,7 @@ const RepoList: FunctionComponent<Props> = ({ repos }) => {
     }
 
     useEffect(() => {
+        setOrder('');
         setTempRepos(repos);
     }, [repos]);
 
@@ -73,6 +74,11 @@ const RepoList: FunctionComponent<Props> = ({ repos }) => {
                         </td>
                     </tr>
                 ))}
+                {tempRepos.length === 0 ? (
+                    <tr>
+                        <td><b>User doesn't have any repos</b></td>
+                    </tr>
+                ): null}
                 </tbody>
             </table>
         </Fragment>

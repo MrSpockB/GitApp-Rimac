@@ -46,6 +46,14 @@ class App extends Component<{}, State> {
       });
   };
 
+  showRepoList = () => {
+    const { selectedUser } = this.state;
+    if (selectedUser === null) {
+      return "";
+    }
+    return <RepoList repos={selectedUser.repos}/>
+  };
+
   render() {
     const { errMessage, selectedUser, isLoading } = this.state;
     return (
@@ -53,12 +61,10 @@ class App extends Component<{}, State> {
         <SearchBar onSearch={this.searchUser} isLoading={isLoading} errMessage={errMessage} />
         <div className="row">
           <div className="column">
-            <UserProfile userData={selectedUser}/>
+            <UserProfile userData={selectedUser} isLoading={isLoading}/>
           </div>
           <div className="column">
-            {selectedUser && (
-                <RepoList repos={selectedUser.repos}/>
-            )}
+            {this.showRepoList()}
           </div>
         </div>
       </div>
