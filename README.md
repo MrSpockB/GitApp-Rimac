@@ -1,1 +1,9 @@
-# GitApp-Rimac
+#  Readme
+## Running the project
+Prerequisites: Node and Yarn
+ 1. After cloning the repository, run `yarn install`
+ 2. Put valid Github credentials in a .env file in the project root (requires a username and a personal access token, they're used to get the emails of the profiles)
+ 3. Finally run `yarn start` and navigate to http://localhost:1234
+## Architecture
+I choose the bundler Parcel to not deal with all the configuration of webpack and setting up the hot reloader but I still had to deal with configuring the dependencies like typescript, sass and babel. I usually split the folders by components, the typescript models, the styles and the "api" methods. Also usually I add the folder "pages" to put all the components that represent a single page like the frontpage or Contact us, so it's easier to identify where I need to change something. In this example, I choose to only use components, because it was a simple exercise and adding a router, pages, etc. I thought it might be too much. The main App is the one that holds all the state, for me it was easier to handle the communication like this because all were direct children from App and I wasn't using a router. Perhaps if I were using it, I would have use Redux to share the state through the app.
+Regarding the styling, I used this framework: https://milligram.io/, in the past probably I would have used Semantic UI but for this exercise I wanted to try something simple and lean and after a bit of research I found this one and I liked the aesthetics and also the fact that barely requires any structure/classes to apply the styles. I used a single stylesheet for all the component styles, as an improvement,  I could have added a partial for each component to leave it more organized. I'm aware of the StyledComponents library and how to encapsulate the styles for a single component using js but for me personally I like having a single style sheet for each component and scoping the styles with [react-css-modules](https://github.com/gajus/react-css-modules)
