@@ -53,7 +53,7 @@ class App extends Component<{}, State> {
         <SearchBar onSearch={this.searchUser} isLoading={isLoading} errMessage={errMessage} />
         <div className="row">
           <div className="column">
-            <UserProfile userData={selectedUser}/>
+            <UserProfile userData={selectedUser} isLoading={isLoading}/>
           </div>
           <div className="column">
             {selectedUser && (
